@@ -118,5 +118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 467f231d173311bf19dbe368304a6dd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  NameRessource: Roche
+  ResourceID: 0
+  ResourceName: Rock
+  ResourcePrefab: {fileID: 4929170163583818358}

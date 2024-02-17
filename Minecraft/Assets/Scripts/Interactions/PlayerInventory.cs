@@ -1,43 +1,53 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Search;
 using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-  private Inventory Inventory { get; }
-  public Transform Map;
+  // The inventory of the player
+  private readonly Inventory PlayerItems;
+  private int ItemTarget = 0;
+
+  // The Map of the game
+  [SerializeField] private Transform PlayerMap;
 
   public PlayerInventory()
   {
-    Inventory = new Inventory();
+    PlayerItems = new Inventory();
   }
 
   public void Collect(Resource Resource)
   {
-    Inventory.Add(Resource.ID, Resource.NameResource, Resource.gameObject, 1);
+    PlayerItems.Add(Resource.GetID(), Resource.GetNameResource(), Resource.GetPrefab(), 1);
   }
 
   void OnTriggerStay(Collider Other)
   {
-    if (Other.TryGetComponent(out Resource foundItem) && Input.GetMouseButtonDown(0))
+    if (Other.TryGetComponent(out Resource FoundItem) && Input.GetMouseButtonDown(0))
     {
-      foundItem.Interact(this);
+      FoundItem.Interact(this);
     }
   }
 
   void Update()
   {
-    if (Input.GetMouseButtonDown(1) && Inventory.Items.Count != 0)
+    // Changinf the targetted item if shift is pressed
+    if (Input.GetKeyDown(KeyCode.C) && !PlayerItems.IsEmpty())
+    {
+      ItemTarget = (ItemTarget + 1) % PlayerItems.GetCount();
+    }
+
+    if (Input.GetMouseButtonDown(1) && !PlayerItems.IsEmpty())
     {
       // Creates a new object and gives it the item data
-      GameObject droppedItem = Instantiate(Inventory.Items[Inventory.Items.Count-1].Model, Map);
-      droppedItem.name = Inventory.Items[Inventory.Items.Count-1].Name;
-      droppedItem.transform.position = transform.position;
+      InventoryItem Item = PlayerItems.GetItem(ItemTarget);
+      Debug.Log(Item);
+      Debug.Log(Item.GetPrefab());
+      GameObject DroppedItem = Instantiate(Item.GetPrefab(), PlayerMap);
+      DroppedItem.name = Item.GetName();
+      DroppedItem.transform.position = transform.position;
+      DroppedItem.SetActive(true);
 
       // Removes the item from the inventory
-      Inventory.Remove(Inventory.Items[Inventory.Items.Count-1].ID, 1);
+      PlayerItems.Remove(Item.GetID(), 1);
     }
   }
 }

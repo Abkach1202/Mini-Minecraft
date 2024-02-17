@@ -1,21 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Resource : MonoBehaviour, Interactable
+public class Resource : MonoBehaviour, IInteractable
 {
-	public int ID;
-	public string NameResource;
+	// The resource's ID
+	[SerializeField] private int ResourceID;
+	// The resource's name
+	[SerializeField] private string ResourceName;
+	// The resource's prefab
+	[SerializeField] private GameObject ResourcePrefab;
 
-	public Resource(int ID, string NameResource)
+	public Resource(int ID, string Name)
 	{
-		this.ID = ID;
-		this.NameResource = NameResource;
+		this.ResourceID = ID;
+		this.ResourceName = Name;
 	}
 
-	public void Interact(PlayerInventory interactor)
+	public int GetID() {
+		return ResourceID;
+	}
+
+	public string GetNameResource() {
+		return ResourceName;
+	}
+
+	public GameObject GetPrefab() {
+		return ResourcePrefab;
+	}
+
+	public void Interact(PlayerInventory Interactor)
 	{
-		interactor.Collect(this);
-		Destroy(gameObject);
+		Interactor.Collect(this);
+		gameObject.SetActive(false);
 	}
 }

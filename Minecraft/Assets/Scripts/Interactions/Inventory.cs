@@ -1,53 +1,67 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
 public class Inventory
 {
-    public List<InventoryItem> Items;
+  private readonly List<InventoryItem> InventoryItems;
 
-    public Inventory()
-    {
-        Items = new List<InventoryItem>();
-    }
+  public Inventory()
+  {
+    InventoryItems = new List<InventoryItem>();
+  }
 
-    public void Add(int ID, string Name, GameObject Model, int Quantity)
+  public void Add(int ID, string Name, GameObject Prefab, int Quantity)
+  {
+    InventoryItem Item = InventoryItems.Find(x => x.GetID() == ID);
+    if (Item == null)
     {
-        InventoryItem item = Items.Find(x => x.ID == ID);
-        if (item == null)
-        {
-            Items.Add(new InventoryItem(ID, Name, PrefabUtility.GetCorrespondingObjectFromOriginalSource(Model), Quantity));
-        }
-        else
-        {
-            item.Quantity += Quantity;
-        }
+      Item = new InventoryItem(ID, Name, Prefab, Quantity);
+      InventoryItems.Add(Item);
     }
+    else
+    {
+      Item.AddQuantity(Quantity);
+    }
+  }
 
-    public void Remove(int ID, int Quantity)
+  public void Remove(int ID, int Quantity)
+  {
+    InventoryItem Item = InventoryItems.Find(x => x.GetID() == ID);
+    if (Item != null)
     {
-        for (int i = 0; i < Items.Count; i++)
-        {
-            if (Items[i].ID == ID)
-            {
-                if (Quantity < Items[i].Quantity)
-                {
-                    Items[i].Quantity -= Quantity;
-                }
-                else
-                {
-                    Items.Remove(Items[i]);
-                }
-            }
-        }
+      Item.AddQuantity(-Quantity);
+      if (Item.GetQuantity() == 0)
+      {
+        InventoryItems.Remove(Item);
+      }
     }
+  }
 
-    public void Display()
+  public int GetCount()
+  {
+    return InventoryItems.Count;
+  }
+
+  public bool IsEmpty()
+  {
+    return GetCount() == 0;
+  }
+
+  public InventoryItem GetItem(int Index)
+  {
+    if (0 <= Index && Index <= GetCount() - 1)
     {
-        foreach (InventoryItem item in Items)
-        {
-            Debug.Log(item.Name + " " + item.Quantity);
-        }
+      return InventoryItems[Index];
     }
+    return null;
+  }
+
+  public void Display()
+  {
+    foreach (InventoryItem item in InventoryItems)
+    {
+      Debug.Log(item.GetName() + " " + item.GetQuantity());
+    }
+  }
 }
