@@ -2,19 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Resource : Interactable
+public class Resource : MonoBehaviour, Interactable
 {
-	public int id { get; private set; }
-	public string name { get; private set; }
+	public int ID;
+	public string NameResource;
 
-	public Resource(int id, string name)
+	public Resource(int ID, string NameResource)
 	{
-		this.id = id;
-		this.name = name;
+		this.ID = ID;
+		this.NameResource = NameResource;
 	}
 
-	public void interact(Character interactor)
+	public void Interact(PlayerInventory interactor)
 	{
-		interactor.collect(this);
+		interactor.Collect(this);
+		Destroy(gameObject);
 	}
 }

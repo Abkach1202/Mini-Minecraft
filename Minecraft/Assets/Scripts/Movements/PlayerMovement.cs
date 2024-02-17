@@ -1,21 +1,21 @@
 using System;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class PlayerMovement : MonoBehaviour
 {
     // The following camera of the player
     public Transform followingCamera;
     // Movements attributes
-    public float speed = 0.1f;
-    public float mouseSensitivity = 2.0f;
+    public float speed;
+    public float mouseSensitivity;
     // Jumping attributes
     public bool isGrounded;
-    public float jumpForce = 5.0f;
+    public float jumpForce;
 
     // The rigidBody associated
     private Rigidbody rb;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -23,19 +23,13 @@ public class PlayerMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    void OnCollisionStay()
-    {
-        isGrounded = true;
-    }
-
-    // Update is called once per frame
     void Update()
     {
         // Directional and mouse input
-        float directionInputV = Input.GetAxis("Vertical") * speed;
-        float directionInputH = Input.GetAxis("Horizontal") * speed;
-        float mouseInputX = Input.GetAxis("Mouse X") * mouseSensitivity;
-        float mouseInputY = -Input.GetAxis("Mouse Y") * mouseSensitivity;
+        float directionInputV = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+        float directionInputH = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+        float mouseInputX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        float mouseInputY = -Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime   ;
         float angleX = followingCamera.localEulerAngles.x;
 
         // Moving faster if shift is pressed
@@ -49,6 +43,15 @@ public class PlayerMovement : MonoBehaviour
         {
             speed /= 2;
         }
+    }
+
+    void FixedUpdate() {
+        // Directional and mouse input
+        float directionInputV = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+        float directionInputH = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+        float mouseInputX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        float mouseInputY = -Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime   ;
+        float angleX = followingCamera.localEulerAngles.x;
 
         // Calculate movement direction based on player's rotation
         Vector3 movementDirection = transform.forward * directionInputV + transform.right * directionInputH;
@@ -68,6 +71,10 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isGrounded = false;
         }
+    }
 
+    void OnCollisionEnter()
+    {
+        isGrounded = true;
     }
 }

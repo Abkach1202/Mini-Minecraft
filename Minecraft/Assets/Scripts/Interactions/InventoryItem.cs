@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class InventoryItem
 {
-    public int id { get; private set; }
-    public string name { get; set; }
-    public int quantity { get; set; }
+    public int ID { get; private set; }
+    public string Name;
+    public int Quantity;
+    public GameObject Model;
 
-    public InventoryItem(int id, string name, int quantity)
+    public InventoryItem(int ID, string Name, GameObject Model, int Quantity)
     {
-        this.id = id;
-        this.name = name;
-        this.quantity = quantity;
+        this.ID = ID;
+        this.Name = Name;
+        this.Quantity = Quantity;
+        this.Model = Model;
     }
 }
