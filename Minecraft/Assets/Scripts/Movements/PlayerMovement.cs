@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Moving the player
         transform.localPosition += movementDirection;
-
+        
         // Rotating the player
         angleX = Math.Clamp(angleX + mouseInputY, 0f, 30f);
         followingCamera.localEulerAngles = new Vector3(angleX, followingCamera.localEulerAngles.y, followingCamera.localEulerAngles.z);
