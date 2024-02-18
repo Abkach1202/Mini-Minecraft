@@ -9,12 +9,6 @@ public class Resource : MonoBehaviour, IInteractable
 	// The resource's prefab
 	[SerializeField] private GameObject ResourcePrefab;
 
-	public Resource(int ID, string Name)
-	{
-		this.ResourceID = ID;
-		this.ResourceName = Name;
-	}
-
 	public int GetID() {
 		return ResourceID;
 	}

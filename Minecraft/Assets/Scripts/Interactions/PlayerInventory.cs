@@ -3,20 +3,21 @@ using UnityEngine;
 public class PlayerInventory : MonoBehaviour
 {
   // The inventory of the player
-  private readonly Inventory PlayerItems;
+  private Inventory PlayerItems;
+  // The item target
   private int ItemTarget = 0;
 
   // The Map of the game
   [SerializeField] private Transform PlayerMap;
 
-  public PlayerInventory()
-  {
-    PlayerItems = new Inventory();
-  }
-
   public void Collect(Resource Resource)
   {
     PlayerItems.Add(Resource.GetID(), Resource.GetNameResource(), Resource.GetPrefab(), 1);
+  }
+
+  void Start()
+  {
+    PlayerItems = new Inventory();
   }
 
   void OnTriggerStay(Collider Other)
@@ -43,7 +44,7 @@ public class PlayerInventory : MonoBehaviour
       Debug.Log(Item.GetPrefab());
       GameObject DroppedItem = Instantiate(Item.GetPrefab(), PlayerMap);
       DroppedItem.name = Item.GetName();
-      DroppedItem.transform.position = transform.position;
+      DroppedItem.transform.position = transform.position + transform.forward;
       DroppedItem.SetActive(true);
 
       // Removes the item from the inventory
