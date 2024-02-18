@@ -1,25 +1,25 @@
-using System;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-  // The following camera of the player
-  [SerializeField] private Transform PlayerCamera;
-
-  // Movements attributes
+  // Speed of movement
   [SerializeField] private float PlayerSpeed;
+  // Mouse sensitivity
   [SerializeField] private float PlayerMouseSensitivity;
-
-  // Jumping attributes
-  [SerializeField] private float PlayerJumpForce;
-  private bool PlayerIsGrounded;
-
+  // Speed of regeneration of the stamina
+  [SerializeField] private float PlayerStaminaGeneration;
+  // The stamina of the player
+  private float PlayerStamina;
+  // If the player is running
+  private bool PlayerIsRunning;
   // The rigidBody associated
   private Rigidbody PlayerRigidBody;
 
   void Start()
   {
     PlayerRigidBody = GetComponent<Rigidbody>();
+    PlayerIsRunning = false;
+    PlayerStamina = 20;
     Cursor.visible = false;
     Cursor.lockState = CursorLockMode.Locked;
   }
@@ -27,15 +27,27 @@ public class PlayerMovement : MonoBehaviour
   void Update()
   {
     // Moving faster if shift is pressed
-    if (Input.GetKeyDown(KeyCode.LeftShift))
+    if (Input.GetKeyDown(KeyCode.LeftShift) && PlayerStamina >= 5)
     {
       PlayerSpeed *= 2;
+      PlayerIsRunning = true;
     }
 
-    // Moving slower if shift is released
-    if (Input.GetKeyUp(KeyCode.LeftShift))
+    // Moving slower if shift is released or stamina lower than 0
+    if ((Input.GetKeyUp(KeyCode.LeftShift) || PlayerStamina <= 0) && PlayerIsRunning)
     {
       PlayerSpeed /= 2;
+      PlayerIsRunning = false;
+    }
+
+    // Regeneration of the stamina
+    if (PlayerIsRunning)
+    {
+      PlayerStamina -= PlayerStaminaGeneration * Time.deltaTime;
+    }
+    else if (PlayerStamina < 20)
+    {
+      PlayerStamina += PlayerStaminaGeneration * Time.deltaTime;
     }
   }
 
@@ -45,31 +57,18 @@ public class PlayerMovement : MonoBehaviour
     float DirectionInputV = Input.GetAxis("Vertical") * PlayerSpeed * Time.deltaTime;
     float DirectionInputH = Input.GetAxis("Horizontal") * PlayerSpeed * Time.deltaTime;
     float MouseInputX = Input.GetAxis("Mouse X") * PlayerMouseSensitivity * Time.deltaTime;
-    float MouseInputY = -Input.GetAxis("Mouse Y") * PlayerMouseSensitivity * Time.deltaTime;
-    float AngleX = PlayerCamera.localEulerAngles.x;
 
     // Calculate movement direction based on player's rotation
     Vector3 MovementDirection = transform.forward * DirectionInputV + transform.right * DirectionInputH;
-    MovementDirection.y = 0;
+    MovementDirection.y = PlayerRigidBody.velocity.y;
 
     // Moving the player
-    transform.localPosition += MovementDirection;
+    if (!GetComponent<PlayerDashing>().IsDashing())
+    {
+      PlayerRigidBody.velocity = MovementDirection;
+    }
 
     // Rotating the player
-    AngleX = Math.Clamp(AngleX + MouseInputY, 0f, 30f);
-    PlayerCamera.localEulerAngles = new Vector3(AngleX, PlayerCamera.localEulerAngles.y, PlayerCamera.localEulerAngles.z);
     transform.Rotate(Vector3.up * MouseInputX);
-
-    // Jumping the player
-    if (Input.GetKeyDown(KeyCode.Space) && PlayerIsGrounded)
-    {
-      PlayerRigidBody.AddForce(Vector3.up * PlayerJumpForce, ForceMode.Impulse);
-      PlayerIsGrounded = false;
-    }
-  }
-
-  void OnCollisionEnter()
-  {
-    PlayerIsGrounded = true;
   }
 }

@@ -41,7 +41,7 @@ public class InventoryItem
 
   public void AddQuantity(int Quantity)
   {
-    ItemQuantity -= Quantity;
+    ItemQuantity += Quantity;
     ItemQuantity = (ItemQuantity > 0) ? ItemQuantity : 0;
   }
 }
