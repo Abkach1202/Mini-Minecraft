@@ -9,21 +9,24 @@ public class Resource : MonoBehaviour, IInteractable
 	// The resource's prefab
 	[SerializeField] private GameObject ResourcePrefab;
 
-	public int GetID() {
+	public int GetID()
+	{
 		return ResourceID;
 	}
 
-	public string GetNameResource() {
+	public string GetNameResource()
+	{
 		return ResourceName;
 	}
 
-	public GameObject GetPrefab() {
+	public GameObject GetPrefab()
+	{
 		return ResourcePrefab;
 	}
 
-	public void Interact(PlayerInventory Interactor)
+	public void Interact(MonoBehaviour Interactor)
 	{
-		Interactor.Collect(this);
+		((PlayerInventory)Interactor).Collect(this);
 		gameObject.SetActive(false);
 	}
 }
