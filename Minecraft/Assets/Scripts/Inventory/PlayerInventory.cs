@@ -38,17 +38,17 @@ public class PlayerInventory : MonoBehaviour
 
     if (Input.GetMouseButtonDown(1) && !PlayerItems.IsEmpty())
     {
-      // Creates a new object and gives it the item data
+      // Creates a new object 
       InventoryItem Item = PlayerItems.GetItem(ItemTarget);
-      Debug.Log(Item);
-      Debug.Log(Item.GetPrefab());
       GameObject DroppedItem = Instantiate(Item.GetPrefab(), PlayerMap);
+      // Gives it the item data
       DroppedItem.name = Item.GetName();
       DroppedItem.transform.position = transform.position + transform.forward;
       DroppedItem.SetActive(true);
 
       // Removes the item from the inventory
       PlayerItems.Remove(Item.GetID(), 1);
+      ItemTarget = (!PlayerItems.IsEmpty()) ? ItemTarget % PlayerItems.GetCount() : 0;
     }
   }
 }

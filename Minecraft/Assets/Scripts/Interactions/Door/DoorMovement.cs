@@ -35,7 +35,7 @@ public class DoorMovement : MonoBehaviour
         if (CurrentAngle <= 0f)
         {
             CurrentAngle = 0f;
-            Door.transform.rotation = Quaternion.Euler(0, 180, 0);
+            Door.transform.localRotation = Quaternion.Euler(0, 0, 0);
             Door.transform.localPosition = Vector3.zero;
         }
     }

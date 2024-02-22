@@ -2099,8 +2099,8 @@ Transform:
   m_GameObject: {fileID: 6145465390349782518}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: -1, z: 0}
-  m_LocalScale: {x: 6, y: 1.25, z: 3.5}
+  m_LocalPosition: {x: -1, y: 0, z: 0}
+  m_LocalScale: {x: 6, y: 3, z: 3.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5333586425544618081}
@@ -2192,8 +2192,6 @@ MonoBehaviour:
   Door: {fileID: 2442708474799046600}
   Angle: 120
   RotationSpeed: 100
-  CurrentAngle: 0
-  PlayerDetected: 0
 --- !u!1 &6199147976007526156
 GameObject:
   m_ObjectHideFlags: 0
