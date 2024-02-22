@@ -2191,6 +2191,9 @@ MonoBehaviour:
   Pivot: {fileID: 3740088257747016941}
   Door: {fileID: 2442708474799046600}
   Angle: 120
+  RotationSpeed: 100
+  CurrentAngle: 0
+  PlayerDetected: 0
 --- !u!1 &6199147976007526156
 GameObject:
   m_ObjectHideFlags: 0
