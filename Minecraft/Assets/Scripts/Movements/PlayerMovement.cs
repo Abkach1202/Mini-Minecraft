@@ -8,8 +8,7 @@ public class PlayerMovement : MonoBehaviour
   [SerializeField] private float PlayerMouseSensitivity;
   // Speed of regeneration of the stamina
   [SerializeField] private float PlayerStaminaGeneration;
-  // The stamina of the player
-  private float PlayerStamina;
+
   // If the player is running
   private bool PlayerIsRunning;
   // The rigidBody associated
@@ -19,22 +18,22 @@ public class PlayerMovement : MonoBehaviour
   {
     PlayerRigidBody = GetComponent<Rigidbody>();
     PlayerIsRunning = false;
-    PlayerStamina = 20;
     Cursor.visible = false;
     Cursor.lockState = CursorLockMode.Locked;
   }
 
   void Update()
   {
+    PlayerHealth Player = GetComponent<PlayerHealth>();
     // Moving faster if shift is pressed
-    if (Input.GetKeyDown(KeyCode.LeftShift) && PlayerStamina >= 5)
+    if (Input.GetKeyDown(KeyCode.LeftShift) && Player.GetStamina() >= PlayerHealth.MAXSTAMINA / 4)
     {
       PlayerSpeed *= 2;
       PlayerIsRunning = true;
     }
 
     // Moving slower if shift is released or stamina lower than 0
-    if ((Input.GetKeyUp(KeyCode.LeftShift) || PlayerStamina <= 0) && PlayerIsRunning)
+    if ((Input.GetKeyUp(KeyCode.LeftShift) || Player.GetStamina() <= 0) && PlayerIsRunning)
     {
       PlayerSpeed /= 2;
       PlayerIsRunning = false;
@@ -43,11 +42,11 @@ public class PlayerMovement : MonoBehaviour
     // Regeneration of the stamina
     if (PlayerIsRunning)
     {
-      PlayerStamina -= PlayerStaminaGeneration * Time.deltaTime;
+      Player.RemoveStamina(PlayerStaminaGeneration * Time.deltaTime);
     }
-    else if (PlayerStamina < 20)
+    else if (Player.GetStamina() < PlayerHealth.MAXSTAMINA)
     {
-      PlayerStamina += PlayerStaminaGeneration * Time.deltaTime;
+      Player.AddStamina(PlayerStaminaGeneration * Time.deltaTime);
     }
   }
 
