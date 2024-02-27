@@ -7,9 +7,6 @@ public class PlayerInventory : MonoBehaviour
   // The item target
   private int ItemTarget = 0;
 
-  // The Map of the game
-  [SerializeField] private Transform PlayerMap;
-
   public void Collect(Resource Resource)
   {
     PlayerItems.Add(Resource.GetID(), Resource.GetNameResource(), Resource.GetPrefab(), 1);
@@ -40,7 +37,7 @@ public class PlayerInventory : MonoBehaviour
     {
       // Creates a new object 
       InventoryItem Item = PlayerItems.GetItem(ItemTarget);
-      GameObject DroppedItem = Instantiate(Item.GetPrefab(), PlayerMap);
+      GameObject DroppedItem = Instantiate(Item.GetPrefab(), transform.parent);
       // Gives it the item data
       DroppedItem.name = Item.GetName();
       DroppedItem.transform.position = transform.position + transform.forward;

@@ -13,7 +13,7 @@ public class CameraRotation : MonoBehaviour
     float AngleX = transform.localEulerAngles.x;
 
     // Rotating the camera
-    AngleX = Math.Clamp(AngleX + MouseInputY, 0f, 30f);
+    AngleX = Math.Clamp(AngleX + MouseInputY, 0f, 90f);
     transform.localEulerAngles = new Vector3(AngleX, transform.localEulerAngles.y, transform.localEulerAngles.z);
 
   }
