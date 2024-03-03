@@ -1,24 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    public Slider slider;
-    public Gradient gradient;
-    public Image fill;
-    public void SetMaxHealth(float health)
-    {
-        slider.maxValue = health;
-        slider.value = health;
+    // The slider of the health bar
+    private Slider BarSlider;
+    // The fill of the health bar
+    private Image BarFill;
+    [SerializeField] private Gradient gradient;
+    [SerializeField] private PlayerHealth Player;
 
-        fill.color = gradient.Evaluate(1f);
+    void Start()
+    {
+        BarSlider = GetComponent<Slider>();
+        BarFill = GetComponent<Image>();
+        BarSlider.maxValue = PlayerHealth.MAXLIFE;
+        BarSlider.value = PlayerHealth.MAXLIFE;
+        BarFill.color = gradient.Evaluate(1f);
     }
-    public void SetHealth(float health)
-    {
-        slider.value = health;
 
-        fill.color = gradient.Evaluate(slider.normalizedValue);
+    void Update()
+    {
+        BarSlider.value = Player.GetLife();
+        BarFill.color = gradient.Evaluate(BarSlider.normalizedValue);
     }
 }

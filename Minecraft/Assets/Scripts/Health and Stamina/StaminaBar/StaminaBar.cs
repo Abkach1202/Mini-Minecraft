@@ -1,19 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class StaminaBar : MonoBehaviour
 {
-    public Slider slider;
+    // The slider of the stamina bar
+    private Slider BarSlider;
+    // The player
+    [SerializeField] private PlayerHealth Player;
 
-    public void SetMaxStamina(float stamina)
+    void Start()
     {
-        slider.maxValue = stamina;
-        slider.value = stamina;
+        BarSlider = GetComponent<Slider>();
+        BarSlider.maxValue = PlayerHealth.MAXSTAMINA;
+        BarSlider.value = PlayerHealth.MAXSTAMINA;
     }
-    public void SetStamina(float stamina)
+
+    void Update()
     {
-        slider.value = stamina;
+        BarSlider.value = Player.GetStamina();
     }
 }
