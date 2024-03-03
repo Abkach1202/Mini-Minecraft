@@ -9,7 +9,9 @@ public class PlayerHealth : MonoBehaviour
     // Max amount of life
     public const float MAXLIFE = 20;
 
-    public HealthBar healtthBar;
+    public HealthBar healthBar;
+
+    public StaminaBar staminaBar;
     // The stamina of the player
     private float PlayerLife;
     // The stamina of the player
@@ -28,25 +30,28 @@ public class PlayerHealth : MonoBehaviour
     public void AddStamina(float Stamina)
     {
         PlayerStamina += Stamina;
+        staminaBar.SetStamina(PlayerStamina);
         if (PlayerStamina > MAXSTAMINA) PlayerStamina = MAXSTAMINA;
     }
 
     public void AddLife(float Life)
     {
         PlayerLife += Life;
+        healthBar.SetHealth(PlayerLife);
         if (PlayerLife > MAXLIFE) PlayerLife = MAXLIFE;
     }
 
     public void RemoveStamina(float Stamina)
     {
         PlayerStamina -= Stamina;
+        staminaBar.SetStamina(PlayerStamina);
         if (PlayerStamina < 0) PlayerStamina = 0;
     }
 
     public void RemoveLife(float Life)
     {
         PlayerLife -= Life;
-        healtthBar.SetHealth(PlayerLife);
+        healthBar.SetHealth(PlayerLife);
         if (PlayerLife < 0) PlayerLife = 0;
     }
 
@@ -55,17 +60,25 @@ public class PlayerHealth : MonoBehaviour
     {
         PlayerLife = MAXLIFE;
         PlayerStamina = MAXSTAMINA;
-        healtthBar.SetMaxHealth(MAXLIFE);
-        
+        healthBar.SetMaxHealth(MAXLIFE);
+        staminaBar.SetMaxStamina(MAXSTAMINA);
     }
     // Update is called once per frame
-    /*void Update()
+    void Update()
     {
+
+        if (PlayerLife < MAXLIFE)
+        {
+            float regenerationRate = 0.5f; // Taux de régénération de la vie par seconde
+            AddLife(regenerationRate * Time.deltaTime); // Ajouter la vie en fonction du temps écoulé
+        }
+
+
         if(Input.GetKeyDown(KeyCode.Space))
         {
             RemoveLife(2);
         }
-    }*/
+    }
 
     void OnCollisionEnter(Collision collision)
     {
