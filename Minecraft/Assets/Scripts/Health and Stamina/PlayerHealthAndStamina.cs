@@ -85,7 +85,7 @@ public class PlayerHealth : MonoBehaviour
         Debug.Log(PlayerLife);
         if (collision.gameObject.CompareTag("Cube")) // Vérifie si le gameObject entré en collision est un cube
         {
-            RemoveLife(1); // Réduit la vie du joueur lors de la collision avec le cube
+            RemoveLife(5); // Réduit la vie du joueur lors de la collision avec le cube
         }
     }
 }
