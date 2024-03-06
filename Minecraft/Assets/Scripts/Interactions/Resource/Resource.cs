@@ -26,7 +26,10 @@ public class Resource : MonoBehaviour, IInteractable
 
 	public void Interact(MonoBehaviour Interactor)
 	{
-		((PlayerInventory)Interactor).Collect(this);
-		gameObject.SetActive(false);
+		if (Input.GetMouseButtonDown(0))
+		{
+			Interactor.GetComponent<PlayerInventory>().Collect(this);
+			gameObject.SetActive(false);
+		}
 	}
 }

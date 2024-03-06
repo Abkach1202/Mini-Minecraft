@@ -11,21 +11,21 @@ public class PlayerJumping : MonoBehaviour
 
   void Start()
   {
-    PlayerRigidBody = GetComponent<Rigidbody>();
+  PlayerRigidBody = GetComponent<Rigidbody>();
   }
 
   void FixedUpdate()
   {
-    // Jumping the player
-    if (Input.GetKeyDown(KeyCode.Space) && PlayerIsGrounded)
-    {
-      PlayerRigidBody.AddForce(Vector3.up * PlayerJumpForce, ForceMode.Impulse);
-      PlayerIsGrounded = false;
-    }
+  // Jumping the player
+  if (Input.GetKeyDown(KeyCode.Space) && PlayerIsGrounded)
+  {
+    PlayerRigidBody.AddForce(Vector3.up * PlayerJumpForce, ForceMode.Impulse);
+    PlayerIsGrounded = false;
+  }
   }
 
   void OnCollisionEnter()
   {
-    PlayerIsGrounded = true;
+  PlayerIsGrounded = true;
   }
 }

@@ -1,51 +1,54 @@
 using UnityEngine;
 
-public class DoorMovement : MonoBehaviour
+public class DoorMovement : MonoBehaviour, IInteractable
 {
-    // The pivot and the door
-    [SerializeField] private GameObject Pivot, Door;
-    // Maximum Angle of rotation
-    [SerializeField] private int Angle;
-    // Speed of rotation
-    [SerializeField] private float RotationSpeed;
-    // The current angle of the rotation
-    private float CurrentAngle;
-    // If the player is detected
-    private bool PlayerDetected;
+  // The pivot and the door
+  [SerializeField] private GameObject Pivot, Door;
+  // Maximum Angle of rotation
+  [SerializeField] private int Angle;
+  // Speed of rotation
+  [SerializeField] private float RotationSpeed;
+  // The current angle of the rotation
+  private float CurrentAngle;
+  // the state of the door
+  private State DoorState;
 
-    void Start()
+  public void Interact(MonoBehaviour Interactor)
+  {
+    if (Input.GetKeyDown(KeyCode.K)) DoorState = State.ClosedUnlocked;
+    else if (Input.GetKeyDown(KeyCode.L)) DoorState = State.ClosedLocked;
+    if (Input.GetMouseButtonDown(0))
     {
-        this.CurrentAngle = 0f;
-        this.PlayerDetected = false;
+      if (DoorState == State.ClosedUnlocked) DoorState = State.IsOpening;
+      else if (DoorState == State.Opened) DoorState = State.IsClosing;
     }
+  }
 
-    void Update()
-    {
-        if (PlayerDetected && CurrentAngle < Angle)
-        {
-            CurrentAngle += RotationSpeed * Time.deltaTime;
-            Door.transform.RotateAround(Pivot.transform.position, Vector3.up, RotationSpeed * Time.deltaTime);
-        }
-        else if (!PlayerDetected && CurrentAngle > 0f)
-        {
-            CurrentAngle -= RotationSpeed * Time.deltaTime;
-            Door.transform.RotateAround(Pivot.transform.position, -Vector3.up, RotationSpeed * Time.deltaTime);
-        }
-        
-        if (CurrentAngle <= 0f)
-        {
-            CurrentAngle = 0f;
-            Door.transform.localRotation = Quaternion.Euler(0, 0, 0);
-            Door.transform.localPosition = Vector3.zero;
-        }
-    }
-    void OnTriggerEnter()
-    {
-        PlayerDetected = true;
-    }
+  void Start()
+  {
+    this.CurrentAngle = 0f;
+    this.DoorState = State.ClosedUnlocked;
+  }
 
-    void OnTriggerExit()
+  void Update()
+  {
+    if (DoorState == State.IsOpening)
     {
-        PlayerDetected = false;
+      CurrentAngle += RotationSpeed * Time.deltaTime;
+      Door.transform.RotateAround(Pivot.transform.position, Vector3.up, RotationSpeed * Time.deltaTime);
+      if (CurrentAngle >= Angle) DoorState = State.Opened;
     }
+    else if (DoorState == State.IsClosing)
+    {
+      CurrentAngle -= RotationSpeed * Time.deltaTime;
+      Door.transform.RotateAround(Pivot.transform.position, -Vector3.up, RotationSpeed * Time.deltaTime);
+      if (CurrentAngle <= 0f)
+      {
+        DoorState = State.ClosedUnlocked;
+        CurrentAngle = 0f;
+        Door.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.Euler(0, 0, 0));
+      }
+    }
+  }
+
 }

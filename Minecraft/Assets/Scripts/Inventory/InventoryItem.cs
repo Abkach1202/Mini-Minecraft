@@ -13,35 +13,35 @@ public class InventoryItem
 
   public InventoryItem(int ID, string Name, GameObject Prefab, int Quantity)
   {
-    this.ItemID = ID;
-    this.ItemName = Name;
-    this.ItemQuantity = (Quantity >= 1) ? Quantity : 1;
-    this.ItemPrefab = Prefab;
+  this.ItemID = ID;
+  this.ItemName = Name;
+  this.ItemQuantity = (Quantity >= 1) ? Quantity : 1;
+  this.ItemPrefab = Prefab;
   }
 
   public int GetID()
   {
-    return ItemID;
+  return ItemID;
   }
 
   public string GetName()
   {
-    return ItemName;
+  return ItemName;
   }
 
   public int GetQuantity()
   {
-    return ItemQuantity;
+  return ItemQuantity;
   }
 
   public GameObject GetPrefab()
   {
-    return ItemPrefab;
+  return ItemPrefab;
   }
 
   public void AddQuantity(int Quantity)
   {
-    ItemQuantity += Quantity;
-    ItemQuantity = (ItemQuantity > 0) ? ItemQuantity : 0;
+  ItemQuantity += Quantity;
+  ItemQuantity = (ItemQuantity > 0) ? ItemQuantity : 0;
   }
 }
