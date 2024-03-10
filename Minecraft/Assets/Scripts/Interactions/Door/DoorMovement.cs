@@ -15,8 +15,16 @@ public class DoorMovement : MonoBehaviour, IInteractable
 
   public void Interact(MonoBehaviour Interactor)
   {
-    if (Input.GetKeyDown(KeyCode.K)) DoorState = State.ClosedUnlocked;
-    else if (Input.GetKeyDown(KeyCode.L)) DoorState = State.ClosedLocked;
+    if (Input.GetKeyDown(KeyCode.U) && DoorState == State.ClosedLocked)
+    {
+      Door.transform.Find("Lock").gameObject.SetActive(false);
+      DoorState = State.ClosedUnlocked;
+    }
+    else if (Input.GetKeyDown(KeyCode.L) && DoorState == State.ClosedUnlocked)
+    {
+      Door.transform.Find("Lock").gameObject.SetActive(true);
+      DoorState = State.ClosedLocked;
+    }
     if (Input.GetMouseButtonDown(0))
     {
       if (DoorState == State.ClosedUnlocked) DoorState = State.IsOpening;
@@ -28,6 +36,7 @@ public class DoorMovement : MonoBehaviour, IInteractable
   {
     this.CurrentAngle = 0f;
     this.DoorState = State.ClosedUnlocked;
+    Door.transform.Find("Lock").gameObject.SetActive(false);
   }
 
   void Update()
