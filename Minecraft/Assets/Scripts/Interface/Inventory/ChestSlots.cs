@@ -1,18 +1,46 @@
-using System.Collections;
-using System.Collections.Generic;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ChestSlots : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+  // The index of the slot in the chest
+  [SerializeField] private int Index;
+  // The image of the slot
+  [SerializeField] private UnityEngine.UI.Image Image;
+  // The background image of the slot
+  [SerializeField] private UnityEngine.UI.Image BackgroundImage;
+  // The player's movement containing the chest inventory
+  [SerializeField] private PlayerMovement PlayerMovement;
 
-    // Update is called once per frame
-    void Update()
+  // Update is called once per frame
+  void Update()
+  {
+    // The chest inventory
+    ChestInventory ChestInventory = PlayerMovement.GetInteractable() as ChestInventory;
+    InventoryItem Item;     
+    // If the chest inventory and the item are not null
+    if (ChestInventory != null && (Item = ChestInventory.GetInventory().GetItem(Index)) != null) 
     {
-        
+      // Set the sprite of the item
+      Image.sprite = Item.GetSprite();
+      // If the index of the slot is the target
+      if (Index == ChestInventory.GetItemTarget())
+      {
+        // Set the background image to yellow
+        BackgroundImage.color = Color.red;
+      }
+      else
+      {
+        // Set the background image to default
+        BackgroundImage.color = Color.yellow;
+      }
     }
+    else
+    {
+      // Set the sprite to default
+      Image.sprite = null;
+      Image.color = Color.yellow;
+    }
+  }
 }

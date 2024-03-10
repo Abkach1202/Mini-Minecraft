@@ -149,3 +149,4 @@ MonoBehaviour:
   ResourceID: 1
   ResourceName: Wood
   ResourcePrefab: {fileID: 1048004111375785839}
+  ResourceSprite: {fileID: 21300000, guid: 411d32194a6a84da0b4e33db2503501a, type: 3}

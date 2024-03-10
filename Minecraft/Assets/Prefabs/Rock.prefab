@@ -101,6 +101,7 @@ MonoBehaviour:
   ResourceID: 0
   ResourceName: Rock
   ResourcePrefab: {fileID: 4929170163583818358}
+  ResourceSprite: {fileID: 21300000, guid: a0c7f1758fb0f4bff87eafbac819c8bc, type: 3}
 --- !u!54 &-2527685291310804819
 Rigidbody:
   m_ObjectHideFlags: 0

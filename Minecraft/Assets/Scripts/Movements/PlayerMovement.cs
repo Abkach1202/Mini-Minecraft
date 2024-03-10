@@ -16,6 +16,13 @@ public class PlayerMovement : MonoBehaviour
   private bool PlayerIsBlocked;
   // The rigidBody associated
   private Rigidbody PlayerRigidBody;
+  // The Interactable connected
+  private IInteractable Interactable;
+
+  public IInteractable GetInteractable()
+  {
+    return Interactable;
+  }
 
   public bool IsBlocked()
   {
@@ -95,6 +102,7 @@ public class PlayerMovement : MonoBehaviour
   if (Other.TryGetComponent(out IInteractable FoundItem))
   {
     FoundItem.Interact(this);
+    Interactable = FoundItem;
   }
   }
 }

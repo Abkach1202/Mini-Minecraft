@@ -12,14 +12,24 @@ public class ChestInventory : MonoBehaviour, IInteractable
     ChestItems = new Inventory();
   }
 
+  public Inventory GetInventory()
+  {
+    return ChestItems;
+  }
+
+  public int GetItemTarget()
+  {
+    return ItemTarget;
+  }
+
   public void Collect(Resource Resource)
   {
-    ChestItems.Add(Resource.GetID(), Resource.GetNameResource(), Resource.GetPrefab(), 1);
+    ChestItems.Add(Resource.GetID(), Resource.GetNameResource(), Resource.GetPrefab(), Resource.GetSprite(), 1);
   }
 
   public void Collect(InventoryItem Item)
   {
-    ChestItems.Add(Item.GetID(), Item.GetName(), Item.GetPrefab(), 1);
+    ChestItems.Add(Item.GetID(), Item.GetName(), Item.GetPrefab(), Item.GetSprite(), 1);
   }
 
   public void GiveItem(PlayerInventory Player, int ID, int Quantity)
@@ -54,7 +64,5 @@ public class ChestInventory : MonoBehaviour, IInteractable
         Collect(Item);
       }
     }
-    // Display the inventory
-    ChestItems.Display();
   }
 }

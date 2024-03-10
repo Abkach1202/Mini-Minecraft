@@ -9,7 +9,7 @@ public class Resource : MonoBehaviour, IInteractable
 	// The resource's prefab
 	[SerializeField] private GameObject ResourcePrefab;
 	// The resource's image
-	[SerializeField] private Sprite ResourceSprite
+	[SerializeField] private Sprite ResourceSprite;
 
 	public int GetID()
 	{

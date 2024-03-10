@@ -9,7 +9,7 @@ public class InventoryItem
   // The Item's Prefab filter
   private readonly GameObject ItemPrefab;
   // The Item's Sprite
-  private readonly Sprite ItemSprite
+  private readonly Sprite ItemSprite;
   // The Item's quantity
   private int ItemQuantity;
   
