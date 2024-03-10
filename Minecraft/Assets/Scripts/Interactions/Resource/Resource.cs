@@ -8,6 +8,8 @@ public class Resource : MonoBehaviour, IInteractable
 	[SerializeField] private string ResourceName;
 	// The resource's prefab
 	[SerializeField] private GameObject ResourcePrefab;
+	// The resource's image
+	[SerializeField] private Sprite ResourceSprite
 
 	public int GetID()
 	{
@@ -23,6 +25,11 @@ public class Resource : MonoBehaviour, IInteractable
 	{
 		return ResourcePrefab;
 	}
+
+	public Sprite GetSprite()
+  {
+  	return ResourceSprite;
+  }
 
 	public void Interact(MonoBehaviour Interactor)
 	{

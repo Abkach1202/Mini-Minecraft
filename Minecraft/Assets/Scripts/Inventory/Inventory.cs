@@ -10,12 +10,12 @@ public class Inventory
     InventoryItems = new List<InventoryItem>();
   }
 
-  public void Add(int ID, string Name, GameObject Prefab, int Quantity)
+  public void Add(int ID, string Name, GameObject Prefab, Sprite Image, int Quantity)
   {
     InventoryItem Item = InventoryItems.Find(x => x.GetID() == ID);
     if (Item == null)
     {
-      Item = new InventoryItem(ID, Name, Prefab, Quantity);
+      Item = new InventoryItem(ID, Name, Prefab, Image, Quantity);
       InventoryItems.Add(Item);
     }
     else

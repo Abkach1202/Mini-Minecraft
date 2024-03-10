@@ -6,17 +6,20 @@ public class InventoryItem
   private readonly int ItemID;
   // The Item's name
   private readonly string ItemName;
-  // The Item's quantity
-  private int ItemQuantity;
   // The Item's Prefab filter
   private readonly GameObject ItemPrefab;
-
-  public InventoryItem(int ID, string Name, GameObject Prefab, int Quantity)
+  // The Item's Sprite
+  private readonly Sprite ItemSprite
+  // The Item's quantity
+  private int ItemQuantity;
+  
+  public InventoryItem(int ID, string Name, GameObject Prefab, Sprite Image, int Quantity)
   {
   this.ItemID = ID;
   this.ItemName = Name;
-  this.ItemQuantity = (Quantity >= 1) ? Quantity : 1;
   this.ItemPrefab = Prefab;
+  this.ItemSprite = Image;
+  this.ItemQuantity = (Quantity >= 1) ? Quantity : 1;
   }
 
   public int GetID()
@@ -29,14 +32,19 @@ public class InventoryItem
   return ItemName;
   }
 
-  public int GetQuantity()
-  {
-  return ItemQuantity;
-  }
-
   public GameObject GetPrefab()
   {
   return ItemPrefab;
+  }
+
+  public Sprite GetSprite()
+  {
+  return ItemSprite;
+  }
+
+  public int GetQuantity()
+  {
+  return ItemQuantity;
   }
 
   public void AddQuantity(int Quantity)

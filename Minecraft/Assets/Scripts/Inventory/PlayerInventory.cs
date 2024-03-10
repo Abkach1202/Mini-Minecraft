@@ -9,12 +9,12 @@ public class PlayerInventory : MonoBehaviour
 
   public void Collect(Resource Resource)
   {
-    PlayerItems.Add(Resource.GetID(), Resource.GetNameResource(), Resource.GetPrefab(), 1);
+    PlayerItems.Add(Resource.GetID(), Resource.GetNameResource(), Resource.GetPrefab(), Resource.GetSprite(), 1);
   }
 
   public void Collect(InventoryItem Item)
   {
-    PlayerItems.Add(Item.GetID(), Item.GetName(), Item.GetPrefab(), 1);
+    PlayerItems.Add(Item.GetID(), Item.GetName(), Item.GetPrefab(), Item.GetSprite(), 1);
   }
 
   public InventoryItem GetCurrentItem()
