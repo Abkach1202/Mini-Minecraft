@@ -7,6 +7,16 @@ public class PlayerInventory : MonoBehaviour
   // The item target
   private int ItemTarget = 0;
 
+  public Inventory GetInventory()
+  {
+    return PlayerItems;
+  }
+
+  public int GetItemTarget()
+  {
+    return ItemTarget;
+  }
+  
   public void Collect(Resource Resource)
   {
     PlayerItems.Add(Resource.GetID(), Resource.GetNameResource(), Resource.GetPrefab(), Resource.GetSprite(), 1);
