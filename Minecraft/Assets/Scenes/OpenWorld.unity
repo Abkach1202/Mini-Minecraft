@@ -1866,6 +1866,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: InvetorySlot
       objectReference: {fileID: 0}
+    - target: {fileID: 5756965126815498687, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: m_Color.b
+      value: 0.12517802
+      objectReference: {fileID: 0}
+    - target: {fileID: 5756965126815498687, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: m_Color.g
+      value: 0.86141694
+      objectReference: {fileID: 0}
+    - target: {fileID: 5756965126815498687, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: m_Color.r
+      value: 0.9150943
+      objectReference: {fileID: 0}
     - target: {fileID: 6018138363093846841, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1977,6 +1989,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3870673670358613809, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
       insertIndex: -1
       addedObject: {fileID: 850003683}
+    - targetCorrespondingSourceObject: {fileID: 3870673670358613809, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 850003684}
   m_SourcePrefab: {fileID: 100100000, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
 --- !u!1001 &116366878
 PrefabInstance:
@@ -10355,6 +10370,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1d2a66d01b884b67944b22d2fd4463a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &850003684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 850003681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeb07ebc7dabb484b81f601db18154d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInventory: {fileID: 0}
 --- !u!1001 &859334452
 PrefabInstance:
   m_ObjectHideFlags: 0
