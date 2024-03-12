@@ -8,18 +8,40 @@ public class ChestInventory : MonoBehaviour, IInteractable
   private Inventory ChestItems;
   // The item target
   private int Target;
+  // The first index of the slot to show
+  private int FirstIndex;
+
 
   // Start is called before the first frame update
   void Start()
   {
     ChestItems = new Inventory();
     Target = 0;
+    FirstIndex = 0;
   }
 
   // Function to get the inventory of the chest
   public InventoryItem GetItem(int Index)
   {
     return ChestItems.GetItem(Index);
+  }
+
+  // Function to get the first index of the slot to show
+  public int GetFirstIndex()
+  {
+    return FirstIndex;
+  }
+
+  public void UpdateFirstIndex()
+  {
+    if (Target < FirstIndex)
+    {
+      FirstIndex = Target;
+    }
+    else if (Target >= FirstIndex + ChestSlots.SLOTS_ROW * ChestSlots.SLOTS_COLUMN)
+    {
+      FirstIndex += 1;
+    }
   }
 
   // Function to get the item target
@@ -33,7 +55,7 @@ public class ChestInventory : MonoBehaviour, IInteractable
   {
     InventoryItem Item = ChestItems.GetItem(Target);
     Player.Collect(Item);
-    ChestItems.Remove(Item.GetID(), 1);
+    ChestItems.Remove(Target, 1);
   }
 
   // Overriding the Interact function
@@ -45,18 +67,22 @@ public class ChestInventory : MonoBehaviour, IInteractable
       if (Key == KeyCode.RightArrow && !ChestItems.IsEmpty())
       {
         Target = (Target + 1) % ChestItems.GetCount();
+        UpdateFirstIndex();
       }
       else if (Key == KeyCode.LeftArrow && !ChestItems.IsEmpty())
       {
         Target = (Target + 1) % ChestItems.GetCount();
+        UpdateFirstIndex();
       }
       else if (Key == KeyCode.DownArrow && !ChestItems.IsEmpty())
       {
-        Target = (Target + ChestSlots.DIM_SLOTS) % ChestItems.GetCount();
+        Target = (Target + ChestSlots.SLOTS_ROW) % ChestItems.GetCount();
+        UpdateFirstIndex();
       }
       else if (Key == KeyCode.UpArrow && !ChestItems.IsEmpty())
       {
-        Target = (Target >= ChestSlots.DIM_SLOTS) ? (Target - ChestSlots.DIM_SLOTS) % ChestItems.GetCount() : 0;
+        Target = (Target >= ChestSlots.SLOTS_ROW) ? (Target - ChestSlots.SLOTS_ROW) % ChestItems.GetCount() : 0;
+        UpdateFirstIndex();
       }
       else if (Key == KeyCode.G && !ChestItems.IsEmpty())
       {

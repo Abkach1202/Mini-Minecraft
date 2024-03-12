@@ -15,7 +15,7 @@ public class Inventory
   // Function to add an item to the inventory
   public void Add(int ID, string Name, GameObject Prefab, Sprite Image, int Quantity)
   {
-    InventoryItem Item = InventoryItems.Find(x => x.GetID() == ID);
+    InventoryItem Item = InventoryItems.Find(x => x.GetID() == ID && x.GetQuantity() < InventoryItem.MAX_QUANTITY);
     if (Item == null)
     {
       Item = new InventoryItem(ID, Name, Prefab, Image, Quantity);
@@ -28,15 +28,14 @@ public class Inventory
   }
 
   // Function to remove an item from the inventory
-  public void Remove(int ID, int Quantity)
+  public void Remove(int Index, int Quantity)
   {
-    InventoryItem Item = InventoryItems.Find(x => x.GetID() == ID);
-    if (Item != null)
+    if (0 <= Index && Index <= GetCount() - 1)
     {
-      Item.AddQuantity(-Quantity);
-      if (Item.GetQuantity() == 0)
+      InventoryItems[Index].AddQuantity(-Quantity);
+      if (InventoryItems[Index].GetQuantity() == 0)
       {
-        InventoryItems.Remove(Item);
+        InventoryItems.Remove(InventoryItems[Index]);
       }
     }
   }

@@ -41,6 +41,7 @@ public class Resource : MonoBehaviour, IInteractable
 		if (Key == KeyCode.Mouse0)
 		{
 			Interactor.GetComponent<PlayerInventory>().Collect(this);
+			Interactor.GetComponent<PlayerMovement>().AnnulateInteractable();
 			gameObject.SetActive(false);
 		}
 	}

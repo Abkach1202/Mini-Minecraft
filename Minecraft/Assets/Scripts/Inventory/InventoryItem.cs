@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class InventoryItem
 {
+  public const int MAX_QUANTITY = 3;
   // The Item's ID
   private readonly int ItemID;
   // The Item's name

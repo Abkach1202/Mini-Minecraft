@@ -84,6 +84,12 @@ public class PlayerMovement : MonoBehaviour
     return Interactable;
   }
 
+  // Function to annulate the interactable
+  public void AnnulateInteractable()
+  {
+    Interactable = null;
+  }
+
   // Update is called once per frame
   void Update()
   {
@@ -140,7 +146,7 @@ public class PlayerMovement : MonoBehaviour
   // Function to stop interacting with the environment
   void OnTriggerExit(Collider Other)
   {
-    Interactable = null;
+    AnnulateInteractable();
     ChestUI.SetActive(false);
   }
 }

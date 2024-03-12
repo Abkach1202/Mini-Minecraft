@@ -6,6 +6,9 @@ public class PlayerInventory : MonoBehaviour
   private Inventory PlayerItems;
   // The item target
   private int Target;
+  // The first index of the slot to show
+  private int FirstIndex;
+
   // If the chest inventory is open
   private bool ChestOpened;
 
@@ -14,6 +17,7 @@ public class PlayerInventory : MonoBehaviour
   {
     PlayerItems = new Inventory();
     Target = 0;
+    FirstIndex = 0;
     ChestOpened = false;
   }
 
@@ -53,6 +57,24 @@ public class PlayerInventory : MonoBehaviour
     return PlayerItems.GetItem(Index);
   }
 
+  // Function to get the first index of the slot to show
+  public int GetFirstIndex()
+  {
+    return FirstIndex;
+  }
+
+  public void UpdateFirstIndex()
+  {
+    if (Target <= FirstIndex)
+    {
+      FirstIndex = Target;
+    }
+    else if (Target >= FirstIndex + ChestSlots.SLOTS_ROW)
+    {
+      FirstIndex += 1;
+    }
+  }
+
   // Function to get the item target
   public int GetTarget()
   {
@@ -65,6 +87,7 @@ public class PlayerInventory : MonoBehaviour
     if (!PlayerItems.IsEmpty())
     {
       Target = (Target + 1) % PlayerItems.GetCount();
+      UpdateFirstIndex();
     }
   }
 
@@ -74,7 +97,8 @@ public class PlayerInventory : MonoBehaviour
     if (!PlayerItems.IsEmpty())
     {
       Target = (Target - 1) % PlayerItems.GetCount();
-      if (Target < 0) Target = PlayerItems.GetCount() - 1;
+      if (Target < 0) Target += PlayerItems.GetCount();
+      UpdateFirstIndex();
     }
   }
 
@@ -85,7 +109,8 @@ public class PlayerInventory : MonoBehaviour
     if (!PlayerItems.IsEmpty())
     {
       Item = PlayerItems.GetItem(Target);
-      PlayerItems.Remove(Item.GetID(), 1);
+      PlayerItems.Remove(Target, 1);
+      Target = (!PlayerItems.IsEmpty()) ? Target % PlayerItems.GetCount() : 0;
     }
     return Item;
   }
@@ -104,7 +129,7 @@ public class PlayerInventory : MonoBehaviour
       DroppedItem.SetActive(true);
 
       // Removes the item from the inventory
-      PlayerItems.Remove(Item.GetID(), 1);
+      PlayerItems.Remove(Target, 1);
       Target = (!PlayerItems.IsEmpty()) ? Target % PlayerItems.GetCount() : 0;
     }
   }
