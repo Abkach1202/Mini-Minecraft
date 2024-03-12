@@ -1,9 +1,10 @@
-using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ChestSlots : MonoBehaviour
 {
+  // The number of slots in the chest
+  public const int DIM_SLOTS = 6;
+
   // The index of the slot in the chest
   [SerializeField] private int Index;
   // The image of the slot
@@ -18,14 +19,14 @@ public class ChestSlots : MonoBehaviour
   {
     // The chest inventory
     ChestInventory ChestInventory = PlayerMovement.GetInteractable() as ChestInventory;
-    InventoryItem Item;     
+    InventoryItem Item;
     // If the chest inventory and the item are not null
-    if (ChestInventory != null && (Item = ChestInventory.GetInventory().GetItem(Index)) != null) 
+    if (ChestInventory != null && (Item = ChestInventory.GetItem(Index)) != null)
     {
       // Set the sprite of the item
       Image.sprite = Item.GetSprite();
       // If the index of the slot is the target
-      if (Index == ChestInventory.GetItemTarget())
+      if (Index == ChestInventory.GetTarget())
       {
         // Set the background image to yellow
         BackgroundImage.color = Color.red;
@@ -40,6 +41,7 @@ public class ChestSlots : MonoBehaviour
     {
       // Set the sprite to default
       Image.sprite = null;
+      BackgroundImage.color = Color.yellow;
       Image.color = Color.yellow;
     }
   }

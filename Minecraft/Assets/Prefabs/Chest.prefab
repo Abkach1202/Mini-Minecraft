@@ -180,6 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe46501bf61e573c99a3919abf7eca07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ChestUI: {fileID: 0}
 --- !u!1 &7355722626231914013
 GameObject:
   m_ObjectHideFlags: 0

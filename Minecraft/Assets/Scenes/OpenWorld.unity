@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657832, g: 0.49641222, b: 0.57481664, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -305,6 +305,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 82743213}
     m_Modifications:
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: Index
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: PlayerMovement
+      value: 
+      objectReference: {fileID: 1414976676}
     - target: {fileID: 3870673670358613809, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
       propertyPath: m_Name
       value: InvetorySlot (4)
@@ -803,6 +811,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 744382211}
     m_Modifications:
+    - target: {fileID: 6722491977620237511, guid: ab56ef81d95ba8161a04c46f01e32c76, type: 3}
+      propertyPath: ChestUI
+      value: 
+      objectReference: {fileID: 1398134264}
     - target: {fileID: 7355722626231914013, guid: ab56ef81d95ba8161a04c46f01e32c76, type: 3}
       propertyPath: m_Name
       value: Chest (1)
@@ -1060,6 +1072,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5670899382323814692, guid: 861e28b2233bd8c6c9606d44e1ca38ab, type: 3}
+      propertyPath: ChestUI
+      value: 
+      objectReference: {fileID: 1398134264}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1390,6 +1406,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 82743213}
     m_Modifications:
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: Index
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: PlayerMovement
+      value: 
+      objectReference: {fileID: 1414976676}
     - target: {fileID: 3870673670358613809, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
       propertyPath: m_Name
       value: InvetorySlot (12)
@@ -1531,6 +1555,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 82743213}
     m_Modifications:
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: Index
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: PlayerMovement
+      value: 
+      objectReference: {fileID: 1414976676}
     - target: {fileID: 3870673670358613809, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
       propertyPath: m_Name
       value: InvetorySlot (20)
@@ -3066,6 +3098,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 82743213}
     m_Modifications:
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: Index
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: PlayerMovement
+      value: 
+      objectReference: {fileID: 1414976676}
     - target: {fileID: 3870673670358613809, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
       propertyPath: m_Name
       value: InvetorySlot (6)
@@ -4651,6 +4691,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 744382211}
     m_Modifications:
+    - target: {fileID: 6722491977620237511, guid: ab56ef81d95ba8161a04c46f01e32c76, type: 3}
+      propertyPath: ChestUI
+      value: 
+      objectReference: {fileID: 1398134264}
     - target: {fileID: 7355722626231914013, guid: ab56ef81d95ba8161a04c46f01e32c76, type: 3}
       propertyPath: m_Name
       value: Chest (3)
@@ -6874,6 +6918,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Roof
       objectReference: {fileID: 0}
+    - target: {fileID: 5670899382323814692, guid: 861e28b2233bd8c6c9606d44e1ca38ab, type: 3}
+      propertyPath: ChestUI
+      value: 
+      objectReference: {fileID: 1398134264}
     - target: {fileID: 6839319785197794122, guid: 861e28b2233bd8c6c9606d44e1ca38ab, type: 3}
       propertyPath: m_Name
       value: Foot
@@ -7158,6 +7206,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 82743213}
     m_Modifications:
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: Index
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: PlayerMovement
+      value: 
+      objectReference: {fileID: 1414976676}
     - target: {fileID: 3870673670358613809, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
       propertyPath: m_Name
       value: InvetorySlot (5)
@@ -7685,6 +7741,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 744382211}
     m_Modifications:
+    - target: {fileID: 6722491977620237511, guid: ab56ef81d95ba8161a04c46f01e32c76, type: 3}
+      propertyPath: ChestUI
+      value: 
+      objectReference: {fileID: 1398134264}
     - target: {fileID: 7355722626231914013, guid: ab56ef81d95ba8161a04c46f01e32c76, type: 3}
       propertyPath: m_Name
       value: Chest (2)
@@ -8229,6 +8289,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 82743213}
     m_Modifications:
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: PlayerMovement
+      value: 
+      objectReference: {fileID: 1414976676}
     - target: {fileID: 3870673670358613809, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
       propertyPath: m_Name
       value: InvetorySlot
@@ -9406,6 +9470,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 82743213}
     m_Modifications:
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: Index
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: PlayerMovement
+      value: 
+      objectReference: {fileID: 1414976676}
     - target: {fileID: 3870673670358613809, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
       propertyPath: m_Name
       value: InvetorySlot (9)
@@ -9527,6 +9599,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 82743213}
     m_Modifications:
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: Index
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: PlayerMovement
+      value: 
+      objectReference: {fileID: 1414976676}
     - target: {fileID: 3870673670358613809, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
       propertyPath: m_Name
       value: InvetorySlot (2)
@@ -9648,6 +9728,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 82743213}
     m_Modifications:
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: Index
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: PlayerMovement
+      value: 
+      objectReference: {fileID: 1414976676}
     - target: {fileID: 3870673670358613809, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
       propertyPath: m_Name
       value: InvetorySlot (17)
@@ -9918,6 +10006,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 82743213}
     m_Modifications:
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: Index
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: PlayerMovement
+      value: 
+      objectReference: {fileID: 1414976676}
     - target: {fileID: 3870673670358613809, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
       propertyPath: m_Name
       value: InvetorySlot (3)
@@ -10476,9 +10572,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 82743213}
     m_Modifications:
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: Index
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: PlayerMovement
+      value: 
+      objectReference: {fileID: 1414976676}
     - target: {fileID: 3870673670358613809, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
       propertyPath: m_Name
       value: InvetorySlot (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3870673670358613809, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6018138363093846841, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
       propertyPath: m_AnchorMax.y
@@ -10793,6 +10901,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 82743213}
     m_Modifications:
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: Index
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: PlayerMovement
+      value: 
+      objectReference: {fileID: 1414976676}
     - target: {fileID: 3870673670358613809, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
       propertyPath: m_Name
       value: InvetorySlot (10)
@@ -10914,6 +11030,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 82743213}
     m_Modifications:
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: Index
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: PlayerMovement
+      value: 
+      objectReference: {fileID: 1414976676}
     - target: {fileID: 3870673670358613809, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
       propertyPath: m_Name
       value: InvetorySlot (13)
@@ -11330,6 +11454,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 82743213}
     m_Modifications:
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: Index
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: PlayerMovement
+      value: 
+      objectReference: {fileID: 1414976676}
     - target: {fileID: 3870673670358613809, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
       propertyPath: m_Name
       value: InvetorySlot (16)
@@ -11615,6 +11747,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 82743213}
     m_Modifications:
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: Index
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: PlayerMovement
+      value: 
+      objectReference: {fileID: 1414976676}
     - target: {fileID: 3870673670358613809, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
       propertyPath: m_Name
       value: InvetorySlot (19)
@@ -11927,7 +12067,7 @@ GameObject:
   - component: {fileID: 1005052898}
   - component: {fileID: 1005052897}
   m_Layer: 5
-  m_Name: ToolBar
+  m_Name: InventoryBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12495,6 +12635,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 82743213}
     m_Modifications:
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: Index
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: PlayerMovement
+      value: 
+      objectReference: {fileID: 1414976676}
     - target: {fileID: 3870673670358613809, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
       propertyPath: m_Name
       value: InvetorySlot (11)
@@ -12735,6 +12883,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 82743213}
     m_Modifications:
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: Index
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: PlayerMovement
+      value: 
+      objectReference: {fileID: 1414976676}
     - target: {fileID: 3870673670358613809, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
       propertyPath: m_Name
       value: InvetorySlot (21)
@@ -13787,6 +13943,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5670899382323814692, guid: 861e28b2233bd8c6c9606d44e1ca38ab, type: 3}
+      propertyPath: ChestUI
+      value: 
+      objectReference: {fileID: 1398134264}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14981,6 +15141,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 82743213}
     m_Modifications:
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: Index
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: PlayerMovement
+      value: 
+      objectReference: {fileID: 1414976676}
     - target: {fileID: 3870673670358613809, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
       propertyPath: m_Name
       value: InvetorySlot (23)
@@ -15303,6 +15471,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 82743213}
     m_Modifications:
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: Index
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: PlayerMovement
+      value: 
+      objectReference: {fileID: 1414976676}
     - target: {fileID: 3870673670358613809, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
       propertyPath: m_Name
       value: InvetorySlot (22)
@@ -15970,7 +16146,7 @@ GameObject:
   - component: {fileID: 1394778432}
   - component: {fileID: 1394778431}
   m_Layer: 5
-  m_Name: ShowMainInventoryButton
+  m_Name: ChestButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16038,31 +16214,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1394778432}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1398134264}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1394778429}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1394778432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16157,6 +16309,10 @@ PrefabInstance:
       propertyPath: Angle
       value: 120
       objectReference: {fileID: 0}
+    - target: {fileID: 5670899382323814692, guid: 861e28b2233bd8c6c9606d44e1ca38ab, type: 3}
+      propertyPath: ChestUI
+      value: 
+      objectReference: {fileID: 1398134264}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16177,7 +16333,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1398134265}
   m_Layer: 5
-  m_Name: MainInventoryGroup
+  m_Name: ChestInterface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16938,6 +17094,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 82743213}
     m_Modifications:
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: Index
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: PlayerMovement
+      value: 
+      objectReference: {fileID: 1414976676}
     - target: {fileID: 3870673670358613809, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
       propertyPath: m_Name
       value: InvetorySlot (18)
@@ -17469,6 +17633,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 744382211}
     m_Modifications:
+    - target: {fileID: 6722491977620237511, guid: ab56ef81d95ba8161a04c46f01e32c76, type: 3}
+      propertyPath: ChestUI
+      value: 
+      objectReference: {fileID: 1398134264}
     - target: {fileID: 7355722626231914013, guid: ab56ef81d95ba8161a04c46f01e32c76, type: 3}
       propertyPath: m_Name
       value: Chest
@@ -17841,6 +18009,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 82743213}
     m_Modifications:
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: Index
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: PlayerMovement
+      value: 
+      objectReference: {fileID: 1414976676}
     - target: {fileID: 3870673670358613809, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
       propertyPath: m_Name
       value: InvetorySlot (14)
@@ -18091,9 +18267,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 82743213}
     m_Modifications:
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: Index
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: PlayerMovement
+      value: 
+      objectReference: {fileID: 1414976676}
     - target: {fileID: 3870673670358613809, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
       propertyPath: m_Name
       value: InvetorySlot (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5756965126815498687, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: m_Color.b
+      value: 0.62352943
+      objectReference: {fileID: 0}
+    - target: {fileID: 5756965126815498687, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: m_Color.g
+      value: 0.8117647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5756965126815498687, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8784314
       objectReference: {fileID: 0}
     - target: {fileID: 6018138363093846841, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
       propertyPath: m_AnchorMax.y
@@ -18991,9 +19187,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 82743213}
     m_Modifications:
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: Index
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: PlayerMovement
+      value: 
+      objectReference: {fileID: 1414976676}
     - target: {fileID: 3870673670358613809, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
       propertyPath: m_Name
       value: InvetorySlot (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3870673670358613809, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6018138363093846841, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
       propertyPath: m_AnchorMax.y
@@ -19622,6 +19830,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 744382211}
     m_Modifications:
+    - target: {fileID: 6722491977620237511, guid: ab56ef81d95ba8161a04c46f01e32c76, type: 3}
+      propertyPath: ChestUI
+      value: 
+      objectReference: {fileID: 1398134264}
     - target: {fileID: 7355722626231914013, guid: ab56ef81d95ba8161a04c46f01e32c76, type: 3}
       propertyPath: m_Name
       value: Chest (4)
@@ -22900,6 +23112,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 82743213}
     m_Modifications:
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: Index
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135514305937366273, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
+      propertyPath: PlayerMovement
+      value: 
+      objectReference: {fileID: 1414976676}
     - target: {fileID: 3870673670358613809, guid: 3d247d7014fc9466eaed9e23e1097920, type: 3}
       propertyPath: m_Name
       value: InvetorySlot (15)

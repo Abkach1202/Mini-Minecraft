@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
   [SerializeField] private float PlayerMouseSensitivity;
   // Speed of regeneration of the stamina
   [SerializeField] private float PlayerStaminaGeneration;
+  // The UI of the chest
+  [SerializeField] private GameObject ChestUI;
 
   // If the player is running
   private bool PlayerIsRunning;
@@ -16,93 +18,129 @@ public class PlayerMovement : MonoBehaviour
   private bool PlayerIsBlocked;
   // The rigidBody associated
   private Rigidbody PlayerRigidBody;
+  // The player input
+  private PlayerInput PlayerInput;
+  // The player health
+  private PlayerHealth PlayerHealth;
+  // The player inventory
+  private PlayerInventory PlayerInventory;
   // The Interactable connected
   private IInteractable Interactable;
 
-  public IInteractable GetInteractable()
+  // Start is called before the first frame update
+  void Start()
   {
-    return Interactable;
+    PlayerHealth = GetComponent<PlayerHealth>();
+    PlayerInput = GetComponent<PlayerInput>();
+    PlayerInventory = GetComponent<PlayerInventory>();
+    PlayerRigidBody = GetComponent<Rigidbody>();
+    PlayerIsRunning = false;
+    Cursor.visible = false;
+    Cursor.lockState = CursorLockMode.Locked;
   }
 
+  // Function to check if the player is blocked
   public bool IsBlocked()
   {
     return PlayerIsBlocked;
   }
 
+  // Function to block the player
   public void BlockPlayer()
   {
-  PlayerIsBlocked = true;
+    PlayerIsBlocked = true;
   }
 
+  // Function to unblock the player
   public IEnumerator UnblockPlayer(float Duration)
   {
     yield return new WaitForSeconds(Duration);
     PlayerIsBlocked = false;
   }
 
-  void Start()
+  // Function to run
+  public void Run()
   {
-  PlayerRigidBody = GetComponent<Rigidbody>();
-  PlayerIsRunning = false;
-  Cursor.visible = false;
-  Cursor.lockState = CursorLockMode.Locked;
+    if (PlayerHealth.GetStamina() >= PlayerHealth.MAXSTAMINA / 4 && !PlayerIsBlocked && !PlayerIsRunning)
+    {
+      PlayerSpeed *= 2;
+      PlayerIsRunning = true;
+    }
   }
 
+  // Function to stop running
+  public void StopRun()
+  {
+    if (PlayerIsRunning)
+    {
+      PlayerSpeed /= 2;
+      PlayerIsRunning = false;
+    }
+  }
+
+  // Function to get the interactable
+  public IInteractable GetInteractable()
+  {
+    return Interactable;
+  }
+
+  // Update is called once per frame
   void Update()
   {
-  PlayerHealth Player = GetComponent<PlayerHealth>();
-  // Moving faster if shift is pressed
-  if (Input.GetKeyDown(KeyCode.LeftShift) && Player.GetStamina() >= PlayerHealth.MAXSTAMINA / 4 && !PlayerIsBlocked)
-  {
-    PlayerSpeed *= 2;
-    PlayerIsRunning = true;
+    // Regeneration of the stamina
+    if (PlayerIsRunning)
+    {
+      PlayerHealth.RemoveStamina(PlayerStaminaGeneration * Time.deltaTime);
+    }
+    else if (PlayerHealth.GetStamina() < PlayerHealth.MAXSTAMINA)
+    {
+      PlayerHealth.AddStamina(PlayerStaminaGeneration * Time.deltaTime);
+    }
   }
 
-  // Moving slower if shift is released or stamina lower than 0
-  if ((Input.GetKeyUp(KeyCode.LeftShift) || Player.GetStamina() <= 0 || PlayerIsBlocked) && PlayerIsRunning)
-  {
-    PlayerSpeed /= 2;
-    PlayerIsRunning = false;
-  }
-
-  // Regeneration of the stamina
-  if (PlayerIsRunning)
-  {
-    Player.RemoveStamina(PlayerStaminaGeneration * Time.deltaTime);
-  }
-  else if (Player.GetStamina() < PlayerHealth.MAXSTAMINA)
-  {
-    Player.AddStamina(PlayerStaminaGeneration * Time.deltaTime);
-  }
-  }
-
+  // FixedUpdate is called once per frame
   void FixedUpdate()
   {
-  // Directional and mouse input
-  float DirectionInputV = Input.GetAxis("Vertical") * PlayerSpeed * Time.deltaTime;
-  float DirectionInputH = Input.GetAxis("Horizontal") * PlayerSpeed * Time.deltaTime;
-  float MouseInputX = Input.GetAxis("Mouse X") * PlayerMouseSensitivity * Time.deltaTime;
-
-  // Calculate movement direction based on player's rotation
-  Vector3 MovementDirection = transform.forward * DirectionInputV + transform.right * DirectionInputH;
-  MovementDirection.y = PlayerRigidBody.velocity.y;
-
-  // Moving the player
-  if (!GetComponent<PlayerDashing>().IsDashing())
-  {
-    PlayerRigidBody.velocity = MovementDirection;
+    if (!PlayerInventory.IsChestOpened())
+    {
+      // Directional input
+      float DirectionInputV = PlayerInput.GetAxisV() * PlayerSpeed * Time.deltaTime;
+      float DirectionInputH = PlayerInput.GetAxisH() * PlayerSpeed * Time.deltaTime;
+      // Calculate movement direction based on player's rotation
+      Vector3 MovementDirection = transform.forward * DirectionInputV + transform.right * DirectionInputH;
+      MovementDirection.y = PlayerRigidBody.velocity.y;
+      // Moving the player
+      if (!GetComponent<PlayerDashing>().IsDashing())
+      {
+        PlayerRigidBody.velocity = MovementDirection;
+      }
+    }
+    // Rotating the player
+    float MouseInputX = PlayerInput.GetMouseX() * PlayerMouseSensitivity * Time.deltaTime;
+    transform.Rotate(Vector3.up * MouseInputX);
   }
 
-  // Rotating the player
-  transform.Rotate(Vector3.up * MouseInputX);
-  }
-
+  // Function to interact with the environment
   void OnTriggerStay(Collider Other)
   {
-  if (Other.TryGetComponent(out IInteractable FoundItem))
-  {
-    FoundItem.Interact(this);
-    Interactable = FoundItem;
+    if (Other.TryGetComponent(out IInteractable FoundItem))
+    {
+      Interactable = FoundItem;
+      if (FoundItem is LifeTrap || FoundItem is StaminaTrap)
+      {
+        FoundItem.Interact(this, KeyCode.None);
+      }
+      if (FoundItem is ChestInventory)
+      {
+        ChestUI.SetActive(true);
+      }
+    }
   }
+
+  // Function to stop interacting with the environment
+  void OnTriggerExit(Collider Other)
+  {
+    Interactable = null;
+    ChestUI.SetActive(false);
   }
 }

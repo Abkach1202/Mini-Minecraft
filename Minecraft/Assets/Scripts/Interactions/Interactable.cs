@@ -1,7 +1,7 @@
-using System;
 using UnityEngine;
 
 public interface IInteractable
 {
-  public void Interact(MonoBehaviour Interactor);
+  // Function to interact with the Interactable
+  public void Interact(MonoBehaviour Interactor, KeyCode Key);
 }

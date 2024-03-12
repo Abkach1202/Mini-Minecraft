@@ -5,46 +5,92 @@ public class PlayerInventory : MonoBehaviour
   // The inventory of the player
   private Inventory PlayerItems;
   // The item target
-  private int ItemTarget = 0;
+  private int Target;
+  // If the chest inventory is open
+  private bool ChestOpened;
 
+  // Start is called before the first frame update
+  void Start()
+  {
+    PlayerItems = new Inventory();
+    Target = 0;
+    ChestOpened = false;
+  }
+
+  // Function to check if the UI Chest Inventory is open
+  public bool IsChestOpened()
+  {
+    return ChestOpened;
+  }
+
+  // Function to open the UI Chest Inventory
+  public void OpenChest()
+  {
+    ChestOpened = true;
+  }
+
+  // Function to close the UI Chest Inventory
+  public void CloseChest()
+  {
+    ChestOpened = false;
+  }
+
+  // Function to Collect a resource
   public void Collect(Resource Resource)
   {
     PlayerItems.Add(Resource.GetID(), Resource.GetNameResource(), Resource.GetPrefab(), Resource.GetSprite(), 1);
   }
 
+  // Function to Collect an inventory item
   public void Collect(InventoryItem Item)
   {
     PlayerItems.Add(Item.GetID(), Item.GetName(), Item.GetPrefab(), Item.GetSprite(), 1);
   }
 
-  public InventoryItem GetCurrentItem()
+  // Function to get the item target
+  public int GetTarget()
+  {
+    return Target;
+  }
+
+  // Function to increment the item target
+  public void NextItem()
+  {
+    if (!PlayerItems.IsEmpty())
+    {
+      Target = (Target + 1) % PlayerItems.GetCount();
+    }
+  }
+
+  // Function to decrement the item target
+  public void PreviousItem()
+  {
+    if (!PlayerItems.IsEmpty())
+    {
+      Target = (Target - 1) % PlayerItems.GetCount();
+      if (Target < 0) Target = PlayerItems.GetCount() - 1;
+    }
+  }
+
+  // Function to get the current InventoryItem of the player
+  public InventoryItem GiveTargettedItem()
   {
     InventoryItem Item = null;
     if (!PlayerItems.IsEmpty())
     {
-      Item = PlayerItems.GetItem(ItemTarget);
+      Item = PlayerItems.GetItem(Target);
       PlayerItems.Remove(Item.GetID(), 1);
     }
     return Item;
   }
 
-  void Start()
+  // Function to drop the current item
+  public void DropTargettedItem()
   {
-    PlayerItems = new Inventory();
-  }
-
-  void Update()
-  {
-    // Changing the targetted item if shift is pressed
-    if (Input.GetKeyDown(KeyCode.F) && !PlayerItems.IsEmpty())
-    {
-      ItemTarget = (ItemTarget + 1) % PlayerItems.GetCount();
-    }
-
-    if (Input.GetMouseButtonDown(1) && !PlayerItems.IsEmpty())
+    if (!PlayerItems.IsEmpty())
     {
       // Creates a new object 
-      InventoryItem Item = PlayerItems.GetItem(ItemTarget);
+      InventoryItem Item = PlayerItems.GetItem(Target);
       GameObject DroppedItem = Instantiate(Item.GetPrefab(), transform.parent);
       // Gives it the item data
       DroppedItem.name = Item.GetName();
@@ -53,7 +99,7 @@ public class PlayerInventory : MonoBehaviour
 
       // Removes the item from the inventory
       PlayerItems.Remove(Item.GetID(), 1);
-      ItemTarget = (!PlayerItems.IsEmpty()) ? ItemTarget % PlayerItems.GetCount() : 0;
+      Target = (!PlayerItems.IsEmpty()) ? Target % PlayerItems.GetCount() : 0;
     }
   }
 }

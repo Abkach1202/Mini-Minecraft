@@ -13,25 +13,7 @@ public class DoorMovement : MonoBehaviour, IInteractable
   // the state of the door
   private State DoorState;
 
-  public void Interact(MonoBehaviour Interactor)
-  {
-    if (Input.GetKeyDown(KeyCode.U) && DoorState == State.ClosedLocked)
-    {
-      Door.transform.Find("Lock").gameObject.SetActive(false);
-      DoorState = State.ClosedUnlocked;
-    }
-    else if (Input.GetKeyDown(KeyCode.L) && DoorState == State.ClosedUnlocked)
-    {
-      Door.transform.Find("Lock").gameObject.SetActive(true);
-      DoorState = State.ClosedLocked;
-    }
-    if (Input.GetMouseButtonDown(0))
-    {
-      if (DoorState == State.ClosedUnlocked) DoorState = State.IsOpening;
-      else if (DoorState == State.Opened) DoorState = State.IsClosing;
-    }
-  }
-
+  // Start is called before the first frame update
   void Start()
   {
     this.CurrentAngle = 0f;
@@ -39,7 +21,28 @@ public class DoorMovement : MonoBehaviour, IInteractable
     Door.transform.Find("Lock").gameObject.SetActive(false);
   }
 
-  void Update()
+  // Overriding the Interact function
+  public void Interact(MonoBehaviour Interactor, KeyCode Key)
+  {
+    if (Key == KeyCode.U && DoorState == State.ClosedLocked)
+    {
+      Door.transform.Find("Lock").gameObject.SetActive(false);
+      DoorState = State.ClosedUnlocked;
+    }
+    else if (Key == KeyCode.L && DoorState == State.ClosedUnlocked)
+    {
+      Door.transform.Find("Lock").gameObject.SetActive(true);
+      DoorState = State.ClosedLocked;
+    }
+    if (Key == KeyCode.Mouse0 && DoorState != State.IsOpening && DoorState != State.IsClosing)
+    {
+      if (DoorState == State.ClosedUnlocked) DoorState = State.IsOpening;
+      else if (DoorState == State.Opened) DoorState = State.IsClosing;
+    }
+  }
+
+  // FixedUpdate is called once per frame
+  void FixedUpdate()
   {
     if (DoorState == State.IsOpening)
     {

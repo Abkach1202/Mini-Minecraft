@@ -1,18 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-//credit by guemmar_abderrahmane
+
 public class MainMenu : MonoBehaviour
 {
+  // Function to play the game
   public void PlayGame()
   {
-    SceneManager.LoadScene(1); 
+    SceneManager.LoadScene(1);
   }
 
+  // Function to quit the game
   public void QuitGame()
   {
-    Application.Quit(); 
+    Application.Quit();
   }
 }
 

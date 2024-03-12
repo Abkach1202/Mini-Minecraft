@@ -11,29 +11,34 @@ public class Resource : MonoBehaviour, IInteractable
 	// The resource's image
 	[SerializeField] private Sprite ResourceSprite;
 
+	// Function to get the resource's ID
 	public int GetID()
 	{
 		return ResourceID;
 	}
 
+	// Function to get the resource's name
 	public string GetNameResource()
 	{
 		return ResourceName;
 	}
 
+	// Function to get the resource's prefab
 	public GameObject GetPrefab()
 	{
 		return ResourcePrefab;
 	}
 
+	// Function to get the resource's image
 	public Sprite GetSprite()
-  {
-  	return ResourceSprite;
-  }
-
-	public void Interact(MonoBehaviour Interactor)
 	{
-		if (Input.GetMouseButtonDown(0))
+		return ResourceSprite;
+	}
+
+	// Overriding the Interact function
+	public void Interact(MonoBehaviour Interactor, KeyCode Key)
+	{
+		if (Key == KeyCode.Mouse0)
 		{
 			Interactor.GetComponent<PlayerInventory>().Collect(this);
 			gameObject.SetActive(false);
