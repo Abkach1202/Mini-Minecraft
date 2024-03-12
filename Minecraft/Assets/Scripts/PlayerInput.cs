@@ -123,10 +123,6 @@ public class PlayerInput : MonoBehaviour
     {
       PlayerInventory.PreviousItem();
     }
-    if (Input.GetKeyUp(KeyCode.J))
-    {
-      PlayerInventory.PreviousItem();
-    }
     if (Input.GetKeyDown(KeyCode.LeftShift))
     {
       PlayerMovement.Run();

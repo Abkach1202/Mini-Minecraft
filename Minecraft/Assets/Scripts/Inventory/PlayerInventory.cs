@@ -47,6 +47,12 @@ public class PlayerInventory : MonoBehaviour
     PlayerItems.Add(Item.GetID(), Item.GetName(), Item.GetPrefab(), Item.GetSprite(), 1);
   }
 
+  // Function to get the inventory of the chest
+  public InventoryItem GetItem(int Index)
+  {
+    return PlayerItems.GetItem(Index);
+  }
+
   // Function to get the item target
   public int GetTarget()
   {

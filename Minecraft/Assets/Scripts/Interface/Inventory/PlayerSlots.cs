@@ -10,21 +10,21 @@ public class PlayerSlots : MonoBehaviour
   [SerializeField] private UnityEngine.UI.Image Image;
   // The background image of the slot
   [SerializeField] private UnityEngine.UI.Image BackgroundImage;
-  // The player's movement containing the chest inventory
+  // The player's inventory to show
   [SerializeField] private PlayerInventory PlayerInventory;
 
   // Update is called once per frame
   void Update()
   {
     // The chest inventory
-    InventoryItem Item = PlayerInventory.GetInventory().GetItem(Index);     
+    InventoryItem Item = PlayerInventory.GetItem(Index);     
     // If the chest inventory and the item are not null
     if (Item != null) 
     {
       // Set the sprite of the item
       Image.sprite = Item.GetSprite();
       // If the index of the slot is the target
-      if (Index == PlayerInventory.GetItemTarget())
+      if (Index == PlayerInventory.GetTarget())
       {
         // Set the background image to yellow
         BackgroundImage.color = Color.red;
@@ -39,6 +39,7 @@ public class PlayerSlots : MonoBehaviour
     {
       // Set the sprite to default
       Image.sprite = null;
+      BackgroundImage.color = Color.yellow;
       Image.color = Color.yellow;
     }
   }
