@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -64,6 +65,12 @@ public class PlayerHealth : MonoBehaviour
   // Update is called once per frame  
   void Update()
   {
+    if (PlayerLife == 0)
+    {
+      SceneManager.LoadScene(0);
+      Cursor.lockState = CursorLockMode.None;
+      Cursor.visible = true;
+    }
     if (PlayerLife < MAXLIFE)
     {
       AddLife(PlayerLifeGeneration * Time.deltaTime);
