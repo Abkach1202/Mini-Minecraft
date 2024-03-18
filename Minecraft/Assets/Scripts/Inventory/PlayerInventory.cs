@@ -12,6 +12,11 @@ public class PlayerInventory : MonoBehaviour
   // If the chest inventory is open
   private bool ChestOpened;
 
+  public PlayerInventory()
+  {
+    Start();
+  }
+
   // Start is called before the first frame update
   void Start()
   {

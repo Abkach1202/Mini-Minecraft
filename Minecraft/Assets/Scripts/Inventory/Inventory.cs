@@ -61,14 +61,4 @@ public class Inventory
     }
     return null;
   }
-
-  // Function to display the inventory
-  public void Display()
-  {
-    Debug.Log("Inventory:");
-    foreach (InventoryItem item in InventoryItems)
-    {
-      Debug.Log(item.GetName() + " " + item.GetQuantity());
-    }
-  }
 }

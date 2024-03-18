@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3300000}
   - component: {fileID: 2300000}
   - component: {fileID: 6400000}
-  - component: {fileID: 6391461247238159935}
+  - component: {fileID: 1026395303113519255}
   m_Layer: 0
   m_Name: Cactus_Tall_01
   m_TagString: Untagged
@@ -107,7 +107,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300002, guid: dee1f2cda9492694e9124ff28f53c5f3, type: 3}
---- !u!114 &6391461247238159935
+--- !u!114 &1026395303113519255
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

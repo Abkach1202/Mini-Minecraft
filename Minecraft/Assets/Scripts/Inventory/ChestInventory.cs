@@ -11,7 +11,6 @@ public class ChestInventory : MonoBehaviour, IInteractable
   // The first index of the slot to show
   private int FirstIndex;
 
-
   // Start is called before the first frame update
   void Start()
   {
@@ -71,7 +70,8 @@ public class ChestInventory : MonoBehaviour, IInteractable
       }
       else if (Key == KeyCode.LeftArrow && !ChestItems.IsEmpty())
       {
-        Target = (Target + 1) % ChestItems.GetCount();
+        Target = (Target - 1) % ChestItems.GetCount();
+        if (Target < 0) Target = ChestItems.GetCount() + Target;
         UpdateFirstIndex();
       }
       else if (Key == KeyCode.DownArrow && !ChestItems.IsEmpty())
